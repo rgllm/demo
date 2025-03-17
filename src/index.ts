@@ -141,7 +141,7 @@ export default async function (manager: Manager, settings: ComponentSettings) {
           const response = await manager.fetch(
             `https://wttr.in/${location}?format=j1`
           )
-          const data = await response.json()
+          const data = response?.json() ?? null
           const [summary] = data.current_condition
           const { temp_C } = summary
           return `<p>Temperature in ${location} is: ${temp_C} &#8451;</p>`
@@ -160,7 +160,7 @@ export default async function (manager: Manager, settings: ComponentSettings) {
         const response = await manager.fetch(
           `https://wttr.in/${location}?format=j1`
         )
-        const data = await response.json()
+        const data = response?.json() ?? null
         const [summary] = data.current_condition
         const { temp_C } = summary
         return `<p>Temperature in ${location} is: ${temp_C} &#8451;</p>`
